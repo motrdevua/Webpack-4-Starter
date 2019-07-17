@@ -49,27 +49,27 @@ module.exports = {
       filename: 'css/[name].css',
       chunkFilename: 'css/[id].css',
     }),
-    new CopyPlugin([
-      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
-    ]),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-    }),
     new SpritesmithPlugin({
       src: {
         cwd: path.resolve(__dirname, 'src/img/png'),
         glob: '*.png',
       },
       target: {
-        image: path.resolve(__dirname, 'src/img/sprite.png'),
-        css: path.resolve(__dirname, 'src/scss/sprite.scss'),
+        image: path.resolve(__dirname, 'src/spritesmith-generated/sprite.png'),
+        css: path.resolve(__dirname, 'src/spritesmith-generated/sprite.scss'),
       },
       apiOptions: {
-        cssImageRef: 'src/img/sprite.png',
+        cssImageRef: '../spritesmith-generated/sprite.png',
       },
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+    }),
+    new CopyPlugin([
+      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
+    ]),
   ],
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -174,16 +174,12 @@ module.exports = {
         test: /\.png$/,
         use: {
           loader: 'file-loader',
-          options: '[path][name].[ext]',
+          options: '[name].[ext]',
         },
       },
     ],
   },
   resolve: {
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, 'src/img'),
-      path.resolve(__dirname, 'src/scss'),
-    ],
+    modules: ['node_modules', 'spritesmith-generated'],
   },
 };
