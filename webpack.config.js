@@ -39,6 +39,9 @@ module.exports = {
   },
   plugins: [
     new WebpackBar(),
+    new CopyPlugin([
+      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
+    ]),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -49,27 +52,30 @@ module.exports = {
       filename: 'css/[name].css',
       chunkFilename: 'css/[id].css',
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+    }),
     new SpritesmithPlugin({
       src: {
         cwd: path.resolve(__dirname, 'src/img/png'),
         glob: '*.png',
       },
       target: {
-        image: path.resolve(__dirname, 'src/spritesmith-generated/sprite.png'),
-        css: path.resolve(__dirname, 'src/spritesmith-generated/sprite.scss'),
+        image: path.resolve(__dirname, 'src/img/sprite.png'),
+        css: [['src/scss/sprite.scss', { format: 'template' }]],
+      },
+      customTemplates: {
+        template: 'src/scss/modules/spritePng.template.handlebars',
+      },
+      spritesmithOptions: {
+        padding: 10,
       },
       apiOptions: {
-        cssImageRef: '../spritesmith-generated/sprite.png',
+        cssImageRef: '../img/sprite.png',
       },
     }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-    }),
-    new CopyPlugin([
-      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
-    ]),
   ],
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -165,21 +171,22 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]',
-            // outputPath: './',
+            name: '[name].[ext]',
           },
         },
       },
       {
-        test: /\.png$/,
+        test: /.png$/,
         use: {
           loader: 'file-loader',
-          options: '[name].[ext]',
+          options: {
+            name: '[folder]/[name].[ext]',
+          },
         },
       },
     ],
   },
   resolve: {
-    modules: ['node_modules', 'spritesmith-generated'],
+    modules: ['node_modules', 'src/scss', 'src/img'],
   },
 };
