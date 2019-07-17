@@ -1,0 +1,200 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$about-circle-name: 'about_circle';
+$about-circle-x: 0px;
+$about-circle-y: 0px;
+$about-circle-offset-x: 0px;
+$about-circle-offset-y: 0px;
+$about-circle-width: 573px;
+$about-circle-height: 573px;
+$about-circle-total-width: 733px;
+$about-circle-total-height: 689px;
+$about-circle-image: 'src/img/sprite.png';
+$about-circle: (0px, 0px, 0px, 0px, 573px, 573px, 733px, 689px, 'src/img/sprite.png', 'about_circle', );
+$about-logo-name: 'about_logo';
+$about-logo-x: 573px;
+$about-logo-y: 425px;
+$about-logo-offset-x: -573px;
+$about-logo-offset-y: -425px;
+$about-logo-width: 138px;
+$about-logo-height: 132px;
+$about-logo-total-width: 733px;
+$about-logo-total-height: 689px;
+$about-logo-image: 'src/img/sprite.png';
+$about-logo: (573px, 425px, -573px, -425px, 138px, 132px, 733px, 689px, 'src/img/sprite.png', 'about_logo', );
+$lang-data-name: 'lang-data';
+$lang-data-x: 108px;
+$lang-data-y: 573px;
+$lang-data-offset-x: -108px;
+$lang-data-offset-y: -573px;
+$lang-data-width: 103px;
+$lang-data-height: 41px;
+$lang-data-total-width: 733px;
+$lang-data-total-height: 689px;
+$lang-data-image: 'src/img/sprite.png';
+$lang-data: (108px, 573px, -108px, -573px, 103px, 41px, 733px, 689px, 'src/img/sprite.png', 'lang-data', );
+$lang-devops-name: 'lang-devops';
+$lang-devops-x: 310px;
+$lang-devops-y: 573px;
+$lang-devops-offset-x: -310px;
+$lang-devops-offset-y: -573px;
+$lang-devops-width: 86px;
+$lang-devops-height: 28px;
+$lang-devops-total-width: 733px;
+$lang-devops-total-height: 689px;
+$lang-devops-image: 'src/img/sprite.png';
+$lang-devops: (310px, 573px, -310px, -573px, 86px, 28px, 733px, 689px, 'src/img/sprite.png', 'lang-devops', );
+$lang-java-name: 'lang-java';
+$lang-java-x: 0px;
+$lang-java-y: 644px;
+$lang-java-offset-x: 0px;
+$lang-java-offset-y: -644px;
+$lang-java-width: 77px;
+$lang-java-height: 45px;
+$lang-java-total-width: 733px;
+$lang-java-total-height: 689px;
+$lang-java-image: 'src/img/sprite.png';
+$lang-java: (0px, 644px, 0px, -644px, 77px, 45px, 733px, 689px, 'src/img/sprite.png', 'lang-java', );
+$lang-php-name: 'lang-php';
+$lang-php-x: 0px;
+$lang-php-y: 573px;
+$lang-php-offset-x: 0px;
+$lang-php-offset-y: -573px;
+$lang-php-width: 108px;
+$lang-php-height: 71px;
+$lang-php-total-width: 733px;
+$lang-php-total-height: 689px;
+$lang-php-image: 'src/img/sprite.png';
+$lang-php: (0px, 573px, 0px, -573px, 108px, 71px, 733px, 689px, 'src/img/sprite.png', 'lang-php', );
+$lang-python-name: 'lang-python';
+$lang-python-x: 396px;
+$lang-python-y: 573px;
+$lang-python-offset-x: -396px;
+$lang-python-offset-y: -573px;
+$lang-python-width: 99px;
+$lang-python-height: 24px;
+$lang-python-total-width: 733px;
+$lang-python-total-height: 689px;
+$lang-python-image: 'src/img/sprite.png';
+$lang-python: (396px, 573px, -396px, -573px, 99px, 24px, 733px, 689px, 'src/img/sprite.png', 'lang-python', );
+$lang-redis-name: 'lang-redis';
+$lang-redis-x: 211px;
+$lang-redis-y: 573px;
+$lang-redis-offset-x: -211px;
+$lang-redis-offset-y: -573px;
+$lang-redis-width: 99px;
+$lang-redis-height: 31px;
+$lang-redis-total-width: 733px;
+$lang-redis-total-height: 689px;
+$lang-redis-image: 'src/img/sprite.png';
+$lang-redis: (211px, 573px, -211px, -573px, 99px, 31px, 733px, 689px, 'src/img/sprite.png', 'lang-redis', );
+$nav-logo-name: 'nav_logo';
+$nav-logo-x: 77px;
+$nav-logo-y: 644px;
+$nav-logo-offset-x: -77px;
+$nav-logo-offset-y: -644px;
+$nav-logo-width: 40px;
+$nav-logo-height: 38px;
+$nav-logo-total-width: 733px;
+$nav-logo-total-height: 689px;
+$nav-logo-image: 'src/img/sprite.png';
+$nav-logo: (77px, 644px, -77px, -644px, 40px, 38px, 733px, 689px, 'src/img/sprite.png', 'nav_logo', );
+$service-img-1-name: 'service_img-1';
+$service-img-1-x: 573px;
+$service-img-1-y: 0px;
+$service-img-1-offset-x: -573px;
+$service-img-1-offset-y: 0px;
+$service-img-1-width: 160px;
+$service-img-1-height: 240px;
+$service-img-1-total-width: 733px;
+$service-img-1-total-height: 689px;
+$service-img-1-image: 'src/img/sprite.png';
+$service-img-1: (573px, 0px, -573px, 0px, 160px, 240px, 733px, 689px, 'src/img/sprite.png', 'service_img-1', );
+$service-img-2-name: 'service_img-2';
+$service-img-2-x: 573px;
+$service-img-2-y: 240px;
+$service-img-2-offset-x: -573px;
+$service-img-2-offset-y: -240px;
+$service-img-2-width: 160px;
+$service-img-2-height: 185px;
+$service-img-2-total-width: 733px;
+$service-img-2-total-height: 689px;
+$service-img-2-image: 'src/img/sprite.png';
+$service-img-2: (573px, 240px, -573px, -240px, 160px, 185px, 733px, 689px, 'src/img/sprite.png', 'service_img-2', );
+$spritesheet-width: 733px;
+$spritesheet-height: 689px;
+$spritesheet-image: 'src/img/sprite.png';
+$spritesheet-sprites: ($about-circle, $about-logo, $lang-data, $lang-devops, $lang-java, $lang-php, $lang-python, $lang-redis, $nav-logo, $service-img-1, $service-img-2, );
+$spritesheet: (733px, 689px, 'src/img/sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

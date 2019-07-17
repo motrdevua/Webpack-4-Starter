@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const SpritesmithPlugin = require('webpack-spritesmith');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -54,8 +55,20 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      jquery: 'jquery',
       'window.jQuery': 'jquery',
+    }),
+    new SpritesmithPlugin({
+      src: {
+        cwd: path.resolve(__dirname, 'src/img/png'),
+        glob: '*.png',
+      },
+      target: {
+        image: path.resolve(__dirname, 'src/img/sprite.png'),
+        css: path.resolve(__dirname, 'src/scss/sprite.scss'),
+      },
+      apiOptions: {
+        cssImageRef: 'src/img/sprite.png',
+      },
     }),
   ],
   optimization: {
@@ -157,6 +170,20 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.png$/,
+        use: {
+          loader: 'file-loader',
+          options: '[path][name].[ext]',
+        },
+      },
+    ],
+  },
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src/img'),
+      path.resolve(__dirname, 'src/scss'),
     ],
   },
 };
