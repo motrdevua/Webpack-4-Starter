@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const SpritesmithPlugin = require('webpack-spritesmith');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -38,6 +39,9 @@ module.exports = {
   },
   plugins: [
     new WebpackBar(),
+    new CopyPlugin([
+      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
+    ]),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -48,14 +52,29 @@ module.exports = {
       filename: 'css/[name].css',
       chunkFilename: 'css/[id].css',
     }),
-    new CopyPlugin([
-      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
-    ]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      jquery: 'jquery',
       'window.jQuery': 'jquery',
+    }),
+    new SpritesmithPlugin({
+      src: {
+        cwd: path.resolve(__dirname, 'src/img/png'),
+        glob: '*.png',
+      },
+      target: {
+        image: path.resolve(__dirname, 'src/img/sprite.png'),
+        css: [['src/scss/sprite.scss', { format: 'template' }]],
+      },
+      customTemplates: {
+        template: 'src/scss/modules/spritePng.template.handlebars',
+      },
+      spritesmithOptions: {
+        padding: 10,
+      },
+      apiOptions: {
+        cssImageRef: '../img/sprite.png',
+      },
     }),
   ],
   optimization: {
@@ -152,11 +171,22 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]',
-            // outputPath: './',
+            name: '[name].[ext]',
+          },
+        },
+      },
+      {
+        test: /.png$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[folder]/[name].[ext]',
           },
         },
       },
     ],
+  },
+  resolve: {
+    modules: ['node_modules', 'src/scss', 'src/img'],
   },
 };
