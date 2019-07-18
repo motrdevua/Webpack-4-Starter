@@ -7,12 +7,10 @@
 
 @import '../../node_modules/rfs/scss';
 
-// ======================================================
-//      Uncomment if png or svg folder not empty
-// ======================================================
+// ==================== PNG Sprite ======================
 
 @import 'modules/mixin-spritePng';
-@import './sprite.scss';
+@import 'temp/sprite.scss';
 
 // ====================  Plugins  =======================
 
@@ -75,7 +73,3 @@ body {
 }
 
 // =======================================
-
-.block {
-  @include sprite($lang-data);
-}
