@@ -21,6 +21,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     contentBase: './dist',
+    overlay: true,
   },
   stats: {
     assets: true,
@@ -39,10 +40,10 @@ module.exports = {
   },
   plugins: [
     new WebpackBar(),
+    new CleanWebpackPlugin(),
     new CopyPlugin([
       { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
     ]),
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -64,7 +65,7 @@ module.exports = {
       },
       target: {
         image: path.resolve(__dirname, 'src/img/sprite.png'),
-        css: [['src/scss/sprite.scss', { format: 'template' }]],
+        css: [['src/scss/temp/sprite.scss', { format: 'template' }]],
       },
       customTemplates: {
         template: 'src/scss/modules/spritePng.template.handlebars',
@@ -73,7 +74,7 @@ module.exports = {
         padding: 10,
       },
       apiOptions: {
-        cssImageRef: '../img/sprite.png',
+        cssImageRef: 'sprite.png',
       },
     }),
   ],
@@ -175,18 +176,9 @@ module.exports = {
           },
         },
       },
-      {
-        test: /.png$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[folder]/[name].[ext]',
-          },
-        },
-      },
     ],
   },
   resolve: {
-    modules: ['node_modules', 'src/scss', 'src/img'],
+    modules: ['node_modules', 'img', 'scss'],
   },
 };
