@@ -8,6 +8,43 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const SpritesmithPlugin = require('webpack-spritesmith');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+
+const svgoOptions = {
+  cleanupAttrs: true,
+  inlineStyles: true,
+  removeDoctype: true,
+  removeXMLProcInst: true,
+  removeComments: true,
+  removeMetadata: true,
+  removeEditorsNSData: true,
+  minifyStyles: true,
+  convertStyleToAttrs: true,
+  cleanupIDs: true,
+  removeRasterImages: true,
+  removeUselessDefs: true,
+  cleanupListOfValues: true,
+  convertColors: true,
+  removeUnknownsAndDefaults: true,
+  removeEmptyAttrs: true,
+  removeNonInheritableGroupAttrs: true,
+  sortAttrs: true,
+  removeUselessStrokeAndFill: true,
+  removeViewBox: true,
+  cleanupEnableBackground: true,
+  removeHiddenElems: true,
+  removeEmptyText: true,
+  convertShapeToPath: true,
+  moveGroupAttrsToElems: true,
+  collapseGroups: true,
+  convertTransform: true,
+  removeEmptyContainers: true,
+  mergePaths: true,
+  removeUnusedNS: true,
+  removeTitle: true,
+  removeDesc: true,
+  removeScriptElement: true,
+};
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -42,7 +79,11 @@ module.exports = {
     new WebpackBar(),
     new CleanWebpackPlugin(),
     new CopyPlugin([
-      { from: './img', to: 'img', ignore: ['.DS_Store', '.gitkeep', 'png/*'] },
+      {
+        from: './img',
+        to: 'img',
+        ignore: ['.DS_Store', '.gitkeep', 'png/*', 'svg/*'],
+      },
     ]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -64,8 +105,8 @@ module.exports = {
         glob: '*.png',
       },
       target: {
-        image: path.resolve(__dirname, 'src/img/sprite.png'),
-        css: [['src/scss/temp/sprite.scss', { format: 'template' }]],
+        image: path.resolve(__dirname, 'src/img/spritePng.png'),
+        css: [['src/scss/temp/_spritePng.scss', { format: 'template' }]],
       },
       customTemplates: {
         template: 'src/scss/modules/spritePng.template.handlebars',
@@ -74,7 +115,17 @@ module.exports = {
         padding: 10,
       },
       apiOptions: {
-        cssImageRef: 'sprite.png',
+        cssImageRef: 'spritePng.png',
+      },
+    }),
+    new SVGSpritemapPlugin('src/img/svg/**/*.svg', {
+      output: {
+        filename: './img/spriteSvg.svg',
+        svg4everybody: true,
+        svgo: svgoOptions,
+      },
+      styles: {
+        filename: path.join(__dirname, 'src/scss/temp/_spriteSvg.scss'),
       },
     }),
   ],
