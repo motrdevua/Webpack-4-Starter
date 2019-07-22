@@ -10,7 +10,8 @@
 // ==================== PNG Sprite ======================
 
 @import 'modules/mixin-spritePng';
-@import 'temp/sprite.scss';
+@import 'temp/spritePng.scss';
+@import 'temp/spriteSvg.scss';
 
 // ====================  Plugins  =======================
 
@@ -73,3 +74,9 @@ body {
 }
 
 // =======================================
+
+.block {
+  @include sprite('agriculture');
+  width: 100%;
+  height: 100%;
+}
