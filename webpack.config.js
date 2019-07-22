@@ -105,8 +105,8 @@ module.exports = {
         glob: '*.png',
       },
       target: {
-        image: path.resolve(__dirname, 'src/img/sprite.png'),
-        css: [['src/scss/temp/spritePng.scss', { format: 'template' }]],
+        image: path.resolve(__dirname, 'src/img/spritePng.png'),
+        css: [['src/scss/temp/_spritePng.scss', { format: 'template' }]],
       },
       customTemplates: {
         template: 'src/scss/modules/spritePng.template.handlebars',
@@ -115,28 +115,17 @@ module.exports = {
         padding: 10,
       },
       apiOptions: {
-        cssImageRef: 'sprite.png',
+        cssImageRef: 'spritePng.png',
       },
     }),
     new SVGSpritemapPlugin('src/img/svg/**/*.svg', {
       output: {
-        filename: '../src/img/spritemap.svg',
-        svg: {
-          sizes: false,
-        },
+        filename: './img/spriteSvg.svg',
         svg4everybody: true,
         svgo: svgoOptions,
       },
-      sprite: {
-        generate: {
-          use: true,
-          view: '-fragment',
-          symbol: true,
-        },
-      },
       styles: {
-        format: 'fragment',
-        filename: path.join(__dirname, 'src/scss/temp/spriteSvg.scss'),
+        filename: path.join(__dirname, 'src/scss/temp/_spriteSvg.scss'),
       },
     }),
   ],
@@ -238,7 +227,6 @@ module.exports = {
           },
         },
       },
-      // svg
     ],
   },
   resolve: {
