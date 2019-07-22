@@ -8,9 +8,6 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const SpritesmithPlugin = require('webpack-spritesmith');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-
-const iconsContext = path.resolve(__dirname, './src/img/svg');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -82,12 +79,6 @@ module.exports = {
       },
       apiOptions: {
         cssImageRef: 'sprite.png',
-      },
-    }),
-    new SpriteLoaderPlugin({
-      plainSprite: true,
-      spriteAttrs: {
-        id: 'my-custom-sprite-id',
       },
     }),
   ],
@@ -178,59 +169,6 @@ module.exports = {
             },
           },
         ],
-      },
-      // svg
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'svg-sprite-loader',
-            options: {
-              extract: true,
-              publicPath: './',
-            },
-          },
-          'svg-transform-loader',
-          {
-            loader: 'svgo-loader',
-            options: {
-              plugins: [
-                { removeDoctype: true },
-                { removeXMLProcInst: true },
-                { removeComments: true },
-                { removeMetadata: true },
-                { removeEditorsNSData: true },
-                { cleanupAttrs: true },
-                { convertStyleToAttrs: true },
-                { removeRasterImages: true },
-                { cleanupNumericValues: true },
-                { convertColors: true },
-                { removeUnknownsAndDefaults: true },
-                { removeNonInheritableGroupAttrs: true },
-                { removeUselessStrokeAndFill: true },
-                { removeViewBox: true },
-                { cleanupEnableBackground: true },
-                { removeHiddenElems: true },
-                { removeEmptyText: true },
-                { convertShapeToPath: true },
-                { moveElemsAttrsToGroup: true },
-                { moveGroupAttrsToElems: true },
-                { collapseGroups: true },
-                { convertPathData: true },
-                { convertTransform: true },
-                { removeEmptyAttrs: true },
-                { removeEmptyContainers: true },
-                { mergePaths: true },
-                { cleanupIDs: true },
-                { removeUnusedNS: true },
-                { transformsWithOnePath: false },
-                { sortAttrs: true },
-                { removeTitle: true },
-              ],
-            },
-          },
-        ],
-        include: iconsContext,
       },
       // fonts
       {
