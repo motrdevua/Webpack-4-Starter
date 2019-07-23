@@ -91,11 +91,6 @@ module.exports = {
         ignore: ['.DS_Store', '.gitkeep', 'png/*', 'svg/*'],
       },
     ]),
-    // new HtmlWebpackPlugin({
-    //   template: 'pug/pages/index.pug',
-    //   filename: 'index.html',
-    //   outputPath: './',
-    // }),
     ...PAGES.map(
       page =>
         new HtmlWebpackPlugin({
