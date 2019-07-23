@@ -86,8 +86,8 @@ module.exports = {
       },
     ]),
     new HtmlWebpackPlugin({
+      template: 'pug/index.pug',
       filename: 'index.html',
-      template: 'index.html',
       outputPath: './',
     }),
     new MiniCssExtractPlugin({
@@ -147,6 +147,14 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env'],
           },
+        },
+      },
+      // pug
+      {
+        test: /\.pug$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'pug-loader',
         },
       },
       // styles
