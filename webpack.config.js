@@ -9,6 +9,12 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const fs = require('fs');
+
+const PAGES_DIR = path.resolve(__dirname, 'src/pug/pages/');
+const PAGES = fs
+  .readdirSync(PAGES_DIR)
+  .filter(fileName => fileName.endsWith('.pug'));
 
 const svgoOptions = {
   cleanupAttrs: true,
@@ -85,11 +91,18 @@ module.exports = {
         ignore: ['.DS_Store', '.gitkeep', 'png/*', 'svg/*'],
       },
     ]),
-    new HtmlWebpackPlugin({
-      template: 'pug/index.pug',
-      filename: 'index.html',
-      outputPath: './',
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: 'pug/pages/index.pug',
+    //   filename: 'index.html',
+    //   outputPath: './',
+    // }),
+    ...PAGES.map(
+      page =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: `./${page.replace(/\.pug/, '.html')}`,
+        })
+    ),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
       chunkFilename: 'css/[id].css',
