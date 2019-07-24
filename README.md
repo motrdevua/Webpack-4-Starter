@@ -35,15 +35,20 @@ This boilerplate with [Webpack 4](https://webpack.js.org/) based setup helps you
 
 1.  Put `*.svg` icons into folder `src/img/svg`.
 2.  Uncomment `@import 'temp/spriteSvg';` in `main.scss` file.
-3.  Use icon in scss file with mixin `@include sprite('icon');`
-
-- Example:
--     .icon {
-        @include sprite('icon');
-        width: 6em;
-        height: 8em;
-      }
-
+3. Use icon as html element with pug mixin `+icon('iconname', 'modifier')`
+Example:
+```shell
+  +icon('facebook')
+```
+4.  Use icon in scss file as background with mixin `@include sprite('icon');`
+Example:
+```shell
+  .icon {
+    @include sprite('icon');
+    width: 6em;
+    height: 8em;
+  }
+```
 ## Structure
 
 Shorten directories and files structure which you'll see after build: 
