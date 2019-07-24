@@ -1,9 +1,6 @@
 # Webpack-4-Starter
 
 [![Webpack](https://flat.badgen.net/badge/webpack/4/14aaf3)](https://webpack.js.org)
-[![dependencies](https://flat.badgen.net/david/dep/cichy380/html-starter-bs4-webpack)](https://david-dm.org/cichy380/html-starter-bs4-webpack)
-[![devDependencies](https://flat.badgen.net/david/dev/cichy380/html-starter-bs4-webpack)](https://david-dm.org/cichy380/html-starter-bs4-webpack?type=dev)
-[![license](https://flat.badgen.net/github/license/cichy380/html-starter-bs4-webpack)](https://github.com/cichy380/html-starter-bs4-webpack/blob/master/LICENSE.md)
 
 This starter-kit with [Webpack 4](https://webpack.js.org/) based setup helps you build web apps and sites much faster.
 
