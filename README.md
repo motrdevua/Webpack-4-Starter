@@ -5,7 +5,7 @@
 [![devDependencies](https://flat.badgen.net/david/dev/cichy380/html-starter-bs4-webpack)](https://david-dm.org/cichy380/html-starter-bs4-webpack?type=dev)
 [![license](https://flat.badgen.net/github/license/cichy380/html-starter-bs4-webpack)](https://github.com/cichy380/html-starter-bs4-webpack/blob/master/LICENSE.md)
 
-This boilerplate with [Webpack 4](https://webpack.js.org/) based setup helps you build web apps and sites much faster.
+This starter-kit with [Webpack 4](https://webpack.js.org/) based setup helps you build web apps and sites much faster.
 
 ## Installation
 
