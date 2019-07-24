@@ -25,11 +25,12 @@ This boilerplate with [Webpack 4](https://webpack.js.org/) based setup helps you
 1.  Put `*.png` icons into folder `src/img/png`.
 2.  Uncomment string `@import 'temp/spritePng';` in `main.scss` file.
 3.  Use icon in scss file with mixin `@include spritePng($icon);`
-
-- Example:
--     .icon {
-        @include spritePng($icon);
-      }
+Example:
+```shell
+  .icon {
+    @include spritePng($icon);
+  }
+```
 
 ### SVG
 
