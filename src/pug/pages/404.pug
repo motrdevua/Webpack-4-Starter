@@ -1,9 +1,11 @@
 extends ../template
 
 block variables
-  - var title = '404'
+  - var title = 'Page Not Found'
   - var pageClass = '404-page'
 
 block content
   h1.error
-    | Error 404 !!!
+    | Page Not Found!!!
+  p.lead
+    | Sorry, but the page you were trying to view does not exist.
