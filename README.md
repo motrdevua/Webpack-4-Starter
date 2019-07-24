@@ -18,9 +18,9 @@ This boilerplate with [Webpack 4](https://webpack.js.org/) based setup helps you
 * `npm run dev` ─ run webpack in development mode.
 * `npm run prod` ─ run webpack in production mode (compile and optimize assets) for production
 
-### How to use sprites
+## How to use sprites
 
-#### PNG
+### PNG
 
 1.  Put `*.png` icons into folder `src/img/png`.
 2.  Uncomment string `@import 'temp/spritePng';` in `main.scss` file.
@@ -31,7 +31,7 @@ This boilerplate with [Webpack 4](https://webpack.js.org/) based setup helps you
         @include spritePng($icon);
       }
 
-#### SVG
+### SVG
 
 1.  Put `*.svg` icons into folder `src/img/svg`.
 2.  Uncomment `@import 'temp/spriteSvg';` in `main.scss` file.
