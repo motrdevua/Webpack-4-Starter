@@ -18,6 +18,32 @@ This boilerplate with [Webpack 4](https://webpack.js.org/) based setup helps you
 * `npm run dev` ─ run webpack in development mode.
 * `npm run prod` ─ run webpack in production mode (compile and optimize assets) for production
 
+### How to use sprites
+
+#### PNG
+
+1.  Put `*.png` icons into folder `src/img/png`.
+2.  Uncomment string `@import 'temp/spritePng';` in `main.scss` file.
+3.  Use icon in scss file with mixin `@include spritePng($icon);`
+
+- Example:
+-     .icon {
+        @include spritePng($icon);
+      }
+
+#### SVG
+
+1.  Put `*.svg` icons into folder `src/img/svg`.
+2.  Uncomment `@import 'temp/spriteSvg';` in `main.scss` file.
+3.  Use icon in scss file with mixin `@include sprite('icon');`
+
+- Example:
+-     .icon {
+        @include sprite('icon');
+        width: 6em;
+        height: 8em;
+      }
+
 ## Structure
 
 Shorten directories and files structure which you'll see after build: 
@@ -52,7 +78,5 @@ Webpack-4-Starter/
 ├── .prettierrc           # Prettier config file
 └── [...]                 # other...
 ```
----
 
 _Enjoy!_
-
