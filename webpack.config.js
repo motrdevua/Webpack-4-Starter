@@ -9,6 +9,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const fs = require('fs');
 
 const PAGES_DIR = path.resolve(__dirname, 'src/pug/pages/');
@@ -134,6 +135,28 @@ module.exports = {
       },
       styles: {
         filename: path.join(__dirname, 'src/scss/temp/_spriteSvg.scss'),
+      },
+    }),
+    new FaviconsWebpackPlugin({
+      logo: 'favicon.png',
+      prefix: 'img/favicon/',
+      emitStats: false,
+      statsFilename: 'iconstats-[hash].json',
+      persistentCache: true,
+      inject: true,
+      background: '#fff',
+      title: 'Webpack App',
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false,
       },
     }),
   ],
