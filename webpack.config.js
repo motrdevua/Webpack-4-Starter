@@ -66,6 +66,8 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     overlay: true,
+    port: 9000,
+    host: '192.168.1.2',
   },
   stats: {
     assets: true,
