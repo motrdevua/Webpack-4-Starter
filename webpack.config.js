@@ -9,7 +9,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const fs = require('fs');
 
 const PAGES_DIR = path.resolve(__dirname, 'src/pug/pages/');
@@ -103,7 +103,7 @@ module.exports = {
     ),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css',
+      chunkFilename: 'css/[name].css',
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -139,28 +139,28 @@ module.exports = {
         filename: path.join(__dirname, 'src/scss/temp/_spriteSvg.scss'),
       },
     }),
-    new FaviconsWebpackPlugin({
-      logo: 'favicon.png',
-      prefix: 'img/favicon/',
-      emitStats: false,
-      statsFilename: 'iconstats-[hash].json',
-      persistentCache: true,
-      inject: true,
-      background: '#fff',
-      title: 'Webpack App',
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: true,
-        coast: false,
-        favicons: true,
-        firefox: true,
-        opengraph: false,
-        twitter: false,
-        yandex: false,
-        windows: false,
-      },
-    }),
+    // new FaviconsWebpackPlugin({
+    //   logo: 'favicon.png',
+    //   prefix: 'img/favicon/',
+    //   emitStats: false,
+    //   statsFilename: 'iconstats-[hash].json',
+    //   persistentCache: true,
+    //   inject: true,
+    //   background: 'transparent',
+    //   title: 'Webpack App',
+    //   icons: {
+    //     android: true,
+    //     appleIcon: true,
+    //     appleStartup: true,
+    //     coast: false,
+    //     favicons: true,
+    //     firefox: true,
+    //     opengraph: false,
+    //     twitter: false,
+    //     yandex: false,
+    //     windows: false,
+    //   },
+    // }),
   ],
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -239,7 +239,7 @@ module.exports = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65,
+                quality: 75,
               },
               optipng: {
                 enabled: false,
