@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +11,6 @@ const WebpackBar = require('webpackbar');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 // const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const fs = require('fs');
 
 const PAGES_DIR = path.resolve(__dirname, 'src/pug/pages/');
 const PAGES = fs
@@ -56,7 +56,7 @@ const svgoOptions = {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    main: ['./js/main.js', './scss/main.scss'],
+    main: ['./js/main.js', './scss/main.scss', './pug/pages/index.pug'],
   },
   output: {
     filename: 'js/[name].js',
@@ -68,6 +68,7 @@ module.exports = {
     overlay: true,
     port: 9000,
     host: '192.168.1.2',
+    hot: true,
   },
   stats: {
     assets: true,
@@ -186,9 +187,19 @@ module.exports = {
       {
         test: /\.pug$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'pug-loader',
-        },
+        use: [
+          {
+            loader: 'raw-loader',
+          },
+          {
+            loader: 'pug-html-loader',
+            options: {
+              // options to pass to the compiler same as: https://pugjs.org/api/reference.html
+              // pretty: true,
+              data: {}, // set of data to pass to the pug render.
+            },
+          },
+        ],
       },
       // styles
       {
@@ -198,7 +209,8 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: '../',
-              hmr: process.env.NODE_ENV === 'development',
+              hmr: process.env.NODE_ENV !== 'production',
+              reloadAll: true,
             },
           },
           {
