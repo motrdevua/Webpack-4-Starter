@@ -53,7 +53,6 @@
     "webpackbar": "^3.2.0"
   },
   "dependencies": {
-    "fullpage.js": "^2.9.7",
     "jquery": "^3.4.1",
     "rfs": "^8.0.4"
   }
