@@ -138,6 +138,9 @@ module.exports = {
       },
       styles: {
         filename: path.join(__dirname, 'src/scss/temp/_spriteSvg.scss'),
+        variables: {
+          sizes: 'fragment-sizes',
+        },
       },
     }),
     // new FaviconsWebpackPlugin({
