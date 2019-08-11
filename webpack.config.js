@@ -12,21 +12,27 @@ const SpritesmithPlugin = require('webpack-spritesmith');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 // const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-const PAGES_DIR = path.resolve(__dirname, 'src/pug/pages/');
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+  dist: path.join(__dirname, 'dist'),
+};
+
+const PAGES_DIR = `${PATHS.src}/pug/pages/`;
 const PAGES = fs
   .readdirSync(PAGES_DIR)
   .filter(fileName => fileName.endsWith('.pug'));
 
 const svgoOptions = {
   cleanupAttrs: true,
-  inlineStyles: true,
   removeDoctype: true,
   removeXMLProcInst: true,
   removeComments: true,
   removeMetadata: true,
   removeEditorsNSData: true,
+  inlineStyles: true,
   minifyStyles: true,
   convertStyleToAttrs: true,
+  removeStyleElement: false,
   cleanupIDs: true,
   removeRasterImages: true,
   removeUselessDefs: true,
@@ -54,13 +60,16 @@ const svgoOptions = {
 };
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
+  context: PATHS.src,
+  externals: {
+    paths: PATHS,
+  },
   entry: {
     main: ['./js/main.js', './scss/main.scss', './pug/pages/index.pug'],
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: PATHS.dist,
   },
   devtool: 'source-map',
   devServer: {
@@ -113,11 +122,11 @@ module.exports = {
     }),
     new SpritesmithPlugin({
       src: {
-        cwd: path.resolve(__dirname, 'src/img/png'),
+        cwd: `${PATHS.src}/img/png`,
         glob: '*.png',
       },
       target: {
-        image: path.resolve(__dirname, 'src/img/spritePng.png'),
+        image: `${PATHS.src}/img/spritePng.png`,
         css: [['src/scss/temp/_spritePng.scss', { format: 'template' }]],
       },
       customTemplates: {
@@ -137,7 +146,7 @@ module.exports = {
         svgo: svgoOptions,
       },
       styles: {
-        filename: path.join(__dirname, 'src/scss/temp/_spriteSvg.scss'),
+        filename: `${PATHS.src}/scss/temp/_spriteSvg.scss`,
         variables: {
           sizes: 'fragment-sizes',
         },
@@ -192,6 +201,9 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'pug-loader',
+          options: {
+            pretty: true,
+          },
         },
       },
       // styles
