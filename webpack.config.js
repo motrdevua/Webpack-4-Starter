@@ -190,19 +190,9 @@ module.exports = {
       {
         test: /\.pug$/,
         exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: 'raw-loader',
-          },
-          {
-            loader: 'pug-html-loader',
-            options: {
-              // options to pass to the compiler same as: https://pugjs.org/api/reference.html
-              // pretty: true,
-              data: {}, // set of data to pass to the pug render.
-            },
-          },
-        ],
+        use: {
+          loader: 'pug-loader',
+        },
       },
       // styles
       {
