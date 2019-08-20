@@ -10,13 +10,20 @@
   },
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "last 5 version",
+    "> 1%",
+    "maintained node versions"
+  ],
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^3.1.0",
+    "css-mqpacker": "^7.0.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-airbnb-base": "^13.2.0",
@@ -35,6 +42,8 @@
     "node-sass": "^4.12.0",
     "npm": "^6.10.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss": "^7.0.17",
+    "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.18.2",
@@ -53,7 +62,9 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
+    "particles.js": "^2.0.0",
     "rfs": "^8.0.4",
+    "smart-grid": "^2.1.2",
     "svg4everybody": "^2.1.9"
   }
 }
