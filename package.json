@@ -62,9 +62,7 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
-    "particles.js": "^2.0.0",
     "rfs": "^8.0.4",
-    "smart-grid": "^2.1.2",
     "svg4everybody": "^2.1.9"
   }
 }
