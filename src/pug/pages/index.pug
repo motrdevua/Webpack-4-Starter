@@ -3,7 +3,12 @@ extends ../template
 block variables
   - var title = 'Webpack 4'
   - var pageClass = 'index-page'
+  - var keywords = 'some keyword'
+  - var description = 'some description'
 
 block content
-  h1.title
-    | Webpack 4
+  .container
+    h1.title Webpack 4
+    section
+      span.text
+        | Awesome isn't it? Let's dive in!

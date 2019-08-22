@@ -1,6 +1,7 @@
 // ===================  Modules  ========================
 
-@import 'modules/reset';
+// @import 'modules/reset';
+@import '../../node_modules/normalize.css/normalize.css';
 @import 'modules/variables';
 @import 'modules/mixin_font-face';
 @import 'modules/fontstylesheet';
@@ -16,6 +17,9 @@
 // @import 'temp/spriteSvg';
 
 // ====================  Plugins  =======================
+// Bootstrap
+
+@import '../../node_modules/bootstrap/scss/bootstrap-grid';
 
 // ====================  Default  =======================
 
@@ -42,7 +46,6 @@ a {
 *::before,
 *::after {
   box-sizing: border-box;
-
   transition: all .2s linear;
 }
 
@@ -52,27 +55,13 @@ li {
 
 body {
   color: $main-color;
-
   @include rfs(16);
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+// ====================  Partials  ======================
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 
-  width: 100%;
-  max-width: 1170px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 15px;
-}
 
-// =======================================
+// =====================  Media  ========================
+
+@import 'partials/media';
