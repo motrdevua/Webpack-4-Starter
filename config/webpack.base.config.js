@@ -1,5 +1,4 @@
 const fs = require('fs');
-const gutil = require('gutil');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,8 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
-const SpritesmithPlugin = require('webpack-spritesmith');
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -20,39 +17,6 @@ const PAGES_DIR = `${PATHS.src}/pug/pages/`;
 const PAGES = fs
   .readdirSync(PAGES_DIR)
   .filter(fileName => fileName.endsWith('.pug'));
-
-const SpritesmithPluginConfig = {
-  src: {
-    cwd: `${PATHS.src}/img/png`,
-    glob: '*.png',
-  },
-  target: {
-    image: `${PATHS.src}/img/spritePng.png`,
-    css: [['src/scss/temp/_spritePng.scss', { format: 'template' }]],
-  },
-  customTemplates: {
-    template: 'src/scss/modules/spritePng.template.handlebars',
-  },
-  spritesmithOptions: {
-    padding: 10,
-  },
-  apiOptions: {
-    cssImageRef: 'spritePng.png',
-  },
-};
-
-const SVGSpritemapPluginConfig = {
-  output: {
-    filename: '../src/img/spriteSvg.svg',
-    svg4everybody: true,
-  },
-  styles: {
-    filename: `${PATHS.src}/scss/temp/_spriteSvg.scss`,
-    variables: {
-      sizes: 'fragment-sizes',
-    },
-  },
-};
 
 const config = {
   context: PATHS.src,
@@ -214,8 +178,6 @@ const config = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
     }),
-    // new SpritesmithPlugin(SpritesmithPluginConfig),
-    // new SVGSpritemapPlugin('src/img/svg/**/*.svg', SVGSpritemapPluginConfig),
   ],
   resolve: {
     modules: ['node_modules'],
@@ -223,10 +185,3 @@ const config = {
 };
 
 module.exports = config;
-
-// fs.readdir(`${PATHS.src}/img/png`, (err, files) => {
-//   console.log(files);
-//   if (files.length !== 0) {
-//     config.plugins.push(new SpritesmithPlugin(SpritesmithPluginConfig));
-//   }
-// });

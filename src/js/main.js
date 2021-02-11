@@ -1,6 +1,8 @@
 import $ from 'jquery';
-import svg4everybody from 'svg4everybody/dist/svg4everybody.min';
+import Popup from './popup';
 
-$(document).ready(function() {
-  svg4everybody({});
+window.addEventListener('load', () => {
+  console.log($);
+  const popup = new Popup();
+  popup.open();
 });

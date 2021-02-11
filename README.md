@@ -6,50 +6,18 @@ This starter-kit with [Webpack 4](https://webpack.js.org/) based setup helps you
 
 ## Installation
 
-1. Clone the repo using `git clone https://github.com/motrdevua/Webpack-4-Starter.git` or [download *Webpack-4-Starter*](https://github.com/motrdevua/Webpack-4-Starter/archive/master.zip).
-2. Open **Webpack-4-Starter** folder in terminal and install a packages via command: `npm install`. 
+1. Clone the repo using `git clone https://github.com/motrdevua/Webpack-4-Starter.git` or [download _Webpack-4-Starter_](https://github.com/motrdevua/Webpack-4-Starter/archive/master.zip).
+2. Open **Webpack-4-Starter** folder in terminal and install a packages via command: `npm install`.
 
 ## Build commands
 
-* `npm run start` ─ start webpack-dev-server, compile assets when file changes are made.
-* `npm run dev` ─ run webpack in development mode.
-* `npm run prod` ─ run webpack in production mode (compile and optimize assets) for production
+- `npm run start` ─ start webpack-dev-server, compile assets when file changes are made.
+- `npm run dev` ─ run webpack in development mode.
+- `npm run prod` ─ run webpack in production mode (compile and optimize assets) for production
 
-## How to use sprites
-
-### PNG
-
-1.  Put `*.png` icons into folder `src/img/png`.
-2.  Uncomment string `@import 'temp/spritePng';` in `main.scss` file.
-3.  Use icon in scss file with mixin `@include spritePng($icon);`
-Example:
-```shell
-  .icon {
-    @include spritePng($icon);
-  }
-```
-
-### SVG
-
-1.  Put `*.svg` icons into folder `src/img/svg`.
-2.  Uncomment `@import 'temp/spriteSvg';` in `main.scss` file.
-3. Use icon as html element with pug mixin `+icon('iconname', 'modifier')`
-Example:
-```shell
-  +icon('facebook')
-```
-4.  Use icon in scss file as background with mixin `@include sprite('icon');`
-Example:
-```shell
-  .icon {
-    @include sprite('icon');
-    width: 6em;
-    height: 8em;
-  }
-```
 ## Structure
 
-Shorten directories and files structure which you'll see after build: 
+Shorten directories and files structure which you'll see after build:
 
 ```shell
 Webpack-4-Starter/
@@ -59,7 +27,7 @@ Webpack-4-Starter/
 │  ├── img/               # images files
 │  │  └── png/            # icons for png sprite
 │  │  └── svg/            # icons for svg sprite
-│  ├── js/            
+│  ├── js/
 │  ├── pug/               # template pug file
 │  │  ├── pages/          # pages
 │  │  │  └── 404.html     # 404 error page
@@ -69,7 +37,7 @@ Webpack-4-Starter/
 │  ├── scss/              # styles
 │  │  ├── modules/        #
 │  │  ├── partials/       # common parts of scss code
-│  │  └── main.scss       # main Sass file that references scss 
+│  │  └── main.scss       # main Sass file that references scss
 ├── .editorconfig         # Editor configuration file
 ├── .eslintrc             # ESLint configuration file
 ├── .gitignore            # Specifies intentionally untracked files to ignore
